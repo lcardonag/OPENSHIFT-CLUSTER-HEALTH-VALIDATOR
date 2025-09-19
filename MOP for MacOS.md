@@ -1,11 +1,10 @@
-Here is a Method of Procedure (MOP) with the corrected, secure script for running the OpenShift health check on a macOS machine. This MOP is designed for an end-user and prioritizes security and reliability.
-
------
 
 ### **MOP: OpenShift Cluster Health Check**
 
 **Objective:**
+Here is a Method of Procedure (MOP) with the corrected, secure script for running the OpenShift health check on a macOS machine. This MOP is designed for an end-user and prioritizes security and reliability.
 To securely execute a health check script on an OpenShift cluster from a macOS computer. This process will generate a comprehensive report (`cluster-validator-report.log`) by gathering cluster metrics and performing a temporary "smoke test" deployment.
+
 
 **Audience:**
 OpenShift Cluster Administrators and Operators.
@@ -47,13 +46,13 @@ This revised script removes all hardcoded credentials and accepts the server URL
 
 ```bash
 #!/bin/bash
-# ************************************************************************************************
-# * - DESCRIPCION: Shell para validación & generación de REPORTE de SALUD para Cluster OPENSHIFT *
-# * - EJECUCION:   ./health-check.sh <api_server_url> <token>                                    *
-# * - AUTOR:       Guerra Arnaiz, Cesar Ricardo (Modificado para seguridad y compatibilidad)     *
-# * - FECHA:       18/09/2025                                                                    *
-# * - VERSION:     2.0                                                                           *
-# ************************************************************************************************
+# ***************************************************************************************************************
+# * - DESCRIPCION: Shell para validación & generación de REPORTE de SALUD para Cluster OPENSHIFT                *
+# * - EJECUCION:   ./health-check.sh <api_server_url> <token>                                                   *
+# * - AUTOR:       Guerra Arnaiz, Cesar Ricardo , Luis Cardona (Modificado para seguridad y compatibilidad)     *
+# * - FECHA:       18/09/2025                                                                                   *
+# * - VERSION:     2.0                                                                                          *
+# ***************************************************************************************************************
 
 # --- Input Validation ---
 if [ "$#" -ne 2 ]; then
