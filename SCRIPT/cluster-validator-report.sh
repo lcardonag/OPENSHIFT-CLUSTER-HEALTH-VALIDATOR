@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ************************************************************************************************ 
-# * - DESCRIPCION: Shell para validación & generación de REPORTE de SALUD para Cluster OPENSHIFT *
+# * - DESCRIPCION: Shell for Openshift Cluster validation and helath report                      *
 # * - EJECUCION:   SHELL                                                                         *
-# * - AUTOR:       Guerra Arnaiz, Cesar Ricardo                                                  *
+# * - AUTOR:       Guerra Arnaiz, Cesar Ricardo , Luis Cardona                                   *
 # * - FECHA:       16/07/2024                                                                    *
 # * - VERSION:     1.0                                                                           *
 # ************************************************************************************************
@@ -27,7 +27,7 @@ rm ${REPORT_LOG_NAME}
 exec &> >(tee -a "${REPORT_LOG_NAME}")
 
 echo ""
-echo "${vTRANSACTION}> ******************** [PROCESO DE VALIDACIÓN: 'CLUSTER: OPENSHIFT'] ********************"
+echo "${vTRANSACTION}> ******************** [PROCESO DE VALIDACIÃ“N: 'CLUSTER: OPENSHIFT'] ********************"
 echo "${vTRANSACTION}> EJECUTANDO SCRIPT..."
 
 echo ""
@@ -43,7 +43,7 @@ oc login --token=${TOKEN_NAME} --server=${API_SERVER}
  
 echo ""
 echo "" 
-echo "${vTRANSACTION}> 2. Validando información del CLÚSTER, la VERSIÓN (ACTUAL) & las VERSIONES (DISPONIBLEs) en el CLUSTER..."
+echo "${vTRANSACTION}> 2. Validando informaciÃ³n del CLÃšSTER, la VERSIÃ“N (ACTUAL) & las VERSIONES (DISPONIBLEs) en el CLUSTER..."
 echo ""
 echo "${vTRANSACTION}> [oc version]"
 oc version
@@ -201,7 +201,7 @@ oc get nodes -o=custom-columns=NODE:.metadata.name,CPU:.status.capacity.cpu,MEMO
 
 echo ""
 echo "" 
-echo "${vTRANSACTION}> 15. Validando CERTIFICADOS (UBICACIÓN & FECHA LÍMITE)..."
+echo "${vTRANSACTION}> 15. Validando CERTIFICADOS (UBICACIÃ“N & FECHA LÃMITE)..."
 echo ""
 echo '${vTRANSACTION}> [echo -e "NAMESPACE\tNAME\tEXPIRY" && oc get secrets -A -o go-template='{{range .items}}{{if eq .type "kubernetes.io/tls"}}{{.metadata.namespace}}{{" "}}{{.metadata.name}}{{" "}}{{index .data "tls.crt"}}{{"\n"}}{{end}}{{end}}' | while read namespace name cert; do echo -en "$namespace\t$name\t"; echo $cert | base64 -d | openssl x509 -noout -enddate; done | column -t]'
 echo -e "NAMESPACE\tNAME\tEXPIRY" && oc get secrets -A -o go-template='{{range .items}}{{if eq .type "kubernetes.io/tls"}}{{.metadata.namespace}}{{" "}}{{.metadata.name}}{{" "}}{{index .data "tls.crt"}}{{"\n"}}{{end}}{{end}}' | while read namespace name cert; do echo -en "$namespace\t$name\t"; echo $cert | base64 -d | openssl x509 -noout -enddate; done | column -t
@@ -219,7 +219,7 @@ oc get machines -n openshift-machine-api
 
 echo ""
 echo "" 
-echo "${vTRANSACTION}> 17. Validando existencia de: CERTIFICATE SIGNING REQUEST (CSR) en el CLUSTER (si están APROBADAS)..."
+echo "${vTRANSACTION}> 17. Validando existencia de: CERTIFICATE SIGNING REQUEST (CSR) en el CLUSTER (si estÃ¡n APROBADAS)..."
 echo ""
 echo "${vTRANSACTION}> [oc get csr]"
 oc get csr 
@@ -327,7 +327,7 @@ oc delete ns ${NAMESPACE_NAME}
 
 echo ""
 echo ""
-echo "${vTRANSACTION}> *********************** [PROCESO DE VALIDACIÓN: 'TERMINADO'] ***********************"
+echo "${vTRANSACTION}> *********************** [PROCESO DE VALIDACIÃ“N: 'TERMINADO'] ***********************"
 echo "${vTRANSACTION}> Exportando REPORTE de LOG: [${REPORT_LOG_NAME}]..."
 echo ""
 
